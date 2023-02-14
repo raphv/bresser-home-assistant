@@ -1,0 +1,3 @@
+#Add to your configuration.yaml
+sensor weatherstation: !include weatherstation-sensors.yaml
+weather: !include weatherstation-template.yaml

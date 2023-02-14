@@ -1,0 +1,103 @@
+#Weather
+  - platform: rest
+    resource: "http://127.0.0.1:8000/data"
+    name: "Bresser Weather Station"
+    value_template: "OK"
+    json_attributes:
+      - "timestamp"
+      - "pressure_inhg"
+      - "pressure_hpa"
+      - "temperature_f"
+      - "temperature_c"
+      - "dew_point_f"
+      - "dew_point_c"
+      - "humidity"
+      - "wind_speed_mph"
+      - "wind_speed_kmh"
+      - "wind_speed_ms"
+      - "wind_gust_mph"
+      - "wind_gust_kmh"
+      - "wind_gust_ms"
+      - "wind_direction_bearing"
+      - "wind_direction_compass"
+      - "rain_in"
+      - "rain_mm"
+      - "daily_rain_in"
+      - "daily_rain_mm"
+      - "solar_radiation"
+      - "uv"
+      - "temperature_indoor_f"
+      - "temperature_indoor_c"
+      - "humidity_indoor"
+  - platform: template
+    sensors:
+      pws_temperature:
+        friendly_name: "Outside temperature"
+        entity_id: sensor.bresser_weather_station
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'temperature_c') }}"
+      pws_pressure:
+        friendly_name: "Atmospheric pressure"
+        entity_id: sensor.bresser_weather_station
+        device_class: atmospheric_pressure
+        unit_of_measurement: "hPa"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'pressure_hpa') }}"
+      pws_dewpoint:
+        friendly_name: "Dew point"
+        entity_id: sensor.bresser_weather_station
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'dew_point_c') }}"
+      pws_humidity:
+        friendly_name: "Outside Humidity"
+        entity_id: sensor.bresser_weather_station
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'humidity') }}"
+      pws_windspeed:
+        friendly_name: "Wind Speed"
+        entity_id: sensor.bresser_weather_station
+        device_class: wind_speed
+        unit_of_measurement: "km/h"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'wind_speed_kmh') }}"
+      pws_windgust:
+        friendly_name: "Wind Gust"
+        entity_id: sensor.bresser_weather_station
+        device_class: wind_speed
+        unit_of_measurement: "km/h"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'wind_gust_kmh') }}"
+      pws_winddirection:
+        friendly_name: "Wind Direction"
+        entity_id: sensor.bresser_weather_station
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'wind_direction_compass') }}"
+      pws_rain:
+        friendly_name: "Rainfall (past hour)"
+        entity_id: sensor.bresser_weather_station
+        device_class: precipitation_intensity
+        unit_of_measurement: "mm/h"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'rain_mm') }}"
+      pws_dailyrain:
+        friendly_name: "Rainfall (day)"
+        entity_id: sensor.bresser_weather_station
+        device_class: precipitation_intensity
+        unit_of_measurement: "mm/d"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'daily_rain_mm') }}"
+      pws_solarradiation:
+        friendly_name: "Solar radiation"
+        entity_id: sensor.bresser_weather_station
+        device_class: irradiance
+        unit_of_measurement: "W/m²"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'solar_radiation') }}"
+      pws_temperatureindoor:
+        friendly_name: "Inside temperature"
+        entity_id: sensor.bresser_weather_station
+        device_class: temperature
+        unit_of_measurement: "°C"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'temperature_indoor_c') }}"
+      pws_humidityindoor:
+        friendly_name: "Inside Humidity"
+        entity_id: sensor.bresser_weather_station
+        device_class: humidity
+        unit_of_measurement: "%"
+        value_template: "{{ state_attr('sensor.bresser_weather_station', 'humidity_indoor') }}"

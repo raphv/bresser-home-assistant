@@ -1,0 +1,13 @@
+[Unit]
+Description=Weather Station Listener
+After=network-online.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/home/%i/
+ExecStart=/home/%i/weatherlistener/env/bin/python /home/%i/weatherlistener/weatherlistener.py
+
+[Install]
+WantedBy=multi-user.target
+

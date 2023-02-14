@@ -1,0 +1,9 @@
+  - platform: template
+    name: "Personal Weather Station"
+    condition_template: "Unknown"
+    temperature_template: "{{ states('sensor.pws_temperature') }}"
+    humidity_template: "{{ states('sensor.pws_humidity') }}"
+    pressure_template: "{{ states('sensor.pws_pressure') }}"
+    wind_speed_template: "{{ states('sensor.pws_windspeed') }}"
+    wind_bearing_template: "{{ state_attr('sensor.bresser_weather_station', 'wind_direction_bearing') }}"
+    attribution_template: "Data collected locally using a Bresser 7-in-1 weather station"
