@@ -14,7 +14,7 @@ I recommend using a virtual environment, then install the only dependency in the
 ```
 USER@raspberrypi:~ $ python3 -m venv weatherlistener/env
 USER@raspberrypi:~ $ source weatherlistener/env/bin/activate
-(weatherlistener) USER@raspberrypi:~ $ pip inst
+(weatherlistener) USER@raspberrypi:~ $ pip install bottle
 ```
 
 To run it as a service, I have created a file in `/etc/systemd/system` named `weatherlistener@USER.service` where `USER` is replaced by my user name. I can then be called by typing:
