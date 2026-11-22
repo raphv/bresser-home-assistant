@@ -1,5 +1,7 @@
 # Bresser WiFi Weather Station for Home Assistant
 
+## *Important: My weather station at home is no longer supported, I can no longer test or fix anything in this repository*
+
 ## If you are using the Home Assistant OS, use the add-on in the sibling repository instead [bresser-pws-haos-addon](https://github.com/raphv/bresser-pws-haos-addon)
 
 ### If you are *not* using Home Assistant OS, I recommend switching.
